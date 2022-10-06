@@ -16,8 +16,8 @@ if TYPE_CHECKING:
     from azure.core.credentials import TokenCredential
 
 
-class GeneratedClientConfiguration(Configuration):  # pylint: disable=too-many-instance-attributes
-    """Configuration for GeneratedClient.
+class ClientConfiguration(Configuration):  # pylint: disable=too-many-instance-attributes
+    """Configuration for Client.
 
     Note that all parameters used to create this instance are saved as instance
     attributes.
@@ -27,13 +27,13 @@ class GeneratedClientConfiguration(Configuration):  # pylint: disable=too-many-i
     """
 
     def __init__(self, credential: "TokenCredential", **kwargs: Any) -> None:
-        super(GeneratedClientConfiguration, self).__init__(**kwargs)
+        super(ClientConfiguration, self).__init__(**kwargs)
         if credential is None:
             raise ValueError("Parameter 'credential' must not be None.")
 
         self.credential = credential
         self.credential_scopes = kwargs.pop("credential_scopes", ["https://api.digitalocean.com"])
-        kwargs.setdefault("sdk_moniker", "generatedclient/{}".format(VERSION))
+        kwargs.setdefault("sdk_moniker", "client/{}".format(VERSION))
         self._configure(**kwargs)
 
     def _configure(

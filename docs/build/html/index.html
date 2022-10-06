@@ -41,10 +41,7 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">digitalocean</span></code> — DigitalOcean Python library</a><ul>
 <li><a class="reference internal" href="#installation">Installation</a></li>
-<li><a class="reference internal" href="#initialization">Initialization</a><ul>
-<li><a class="reference internal" href="#digitalocean.Client"><code class="docutils literal notranslate"><span class="pre">Client()</span></code></a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#initialization">Initialization</a></li>
 <li><a class="reference internal" href="#example">Example</a><ul>
 <li><a class="reference internal" href="#pagination">Pagination</a></li>
 </ul>
@@ -107,6 +104,19 @@
 <li><a class="reference internal" href="#digitalocean.operations.CertificatesOperations.delete"><code class="docutils literal notranslate"><span class="pre">CertificatesOperations.delete()</span></code></a></li>
 <li><a class="reference internal" href="#digitalocean.operations.CertificatesOperations.get"><code class="docutils literal notranslate"><span class="pre">CertificatesOperations.get()</span></code></a></li>
 <li><a class="reference internal" href="#digitalocean.operations.CertificatesOperations.list"><code class="docutils literal notranslate"><span class="pre">CertificatesOperations.list()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#digitalocean.operations.CheckOperations"><code class="docutils literal notranslate"><span class="pre">CheckOperations</span></code></a><ul>
+<li><a class="reference internal" href="#digitalocean.operations.CheckOperations.alerts_list"><code class="docutils literal notranslate"><span class="pre">CheckOperations.alerts_list()</span></code></a></li>
+<li><a class="reference internal" href="#digitalocean.operations.CheckOperations.create"><code class="docutils literal notranslate"><span class="pre">CheckOperations.create()</span></code></a></li>
+<li><a class="reference internal" href="#digitalocean.operations.CheckOperations.delete"><code class="docutils literal notranslate"><span class="pre">CheckOperations.delete()</span></code></a></li>
+<li><a class="reference internal" href="#digitalocean.operations.CheckOperations.get"><code class="docutils literal notranslate"><span class="pre">CheckOperations.get()</span></code></a></li>
+<li><a class="reference internal" href="#digitalocean.operations.CheckOperations.state_get"><code class="docutils literal notranslate"><span class="pre">CheckOperations.state_get()</span></code></a></li>
+<li><a class="reference internal" href="#digitalocean.operations.CheckOperations.update"><code class="docutils literal notranslate"><span class="pre">CheckOperations.update()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#digitalocean.operations.ChecksOperations"><code class="docutils literal notranslate"><span class="pre">ChecksOperations</span></code></a><ul>
+<li><a class="reference internal" href="#digitalocean.operations.ChecksOperations.list"><code class="docutils literal notranslate"><span class="pre">ChecksOperations.list()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#digitalocean.operations.DatabasesOperations"><code class="docutils literal notranslate"><span class="pre">DatabasesOperations</span></code></a><ul>
@@ -377,6 +387,13 @@
 <li><a class="reference internal" href="#digitalocean.operations.TagsOperations.unassign_resources"><code class="docutils literal notranslate"><span class="pre">TagsOperations.unassign_resources()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#digitalocean.operations.UptimeOperations"><code class="docutils literal notranslate"><span class="pre">UptimeOperations</span></code></a><ul>
+<li><a class="reference internal" href="#digitalocean.operations.UptimeOperations.alert_create"><code class="docutils literal notranslate"><span class="pre">UptimeOperations.alert_create()</span></code></a></li>
+<li><a class="reference internal" href="#digitalocean.operations.UptimeOperations.alert_delete"><code class="docutils literal notranslate"><span class="pre">UptimeOperations.alert_delete()</span></code></a></li>
+<li><a class="reference internal" href="#digitalocean.operations.UptimeOperations.alert_get"><code class="docutils literal notranslate"><span class="pre">UptimeOperations.alert_get()</span></code></a></li>
+<li><a class="reference internal" href="#digitalocean.operations.UptimeOperations.alert_update"><code class="docutils literal notranslate"><span class="pre">UptimeOperations.alert_update()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#digitalocean.operations.VolumeActionsOperations"><code class="docutils literal notranslate"><span class="pre">VolumeActionsOperations</span></code></a><ul>
 <li><a class="reference internal" href="#digitalocean.operations.VolumeActionsOperations.get"><code class="docutils literal notranslate"><span class="pre">VolumeActionsOperations.get()</span></code></a></li>
 <li><a class="reference internal" href="#digitalocean.operations.VolumeActionsOperations.list"><code class="docutils literal notranslate"><span class="pre">VolumeActionsOperations.list()</span></code></a></li>
@@ -460,24 +477,25 @@ DigitalOcean API Token is required. The token can be passed explicitly to <code 
 <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;&lt;DIGITALOCEAN_TOKEN&gt;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<dl class="py function">
-<dt class="sig sig-object py" id="digitalocean.Client">
-<span class="sig-prename descclassname"><span class="pre">digitalocean.</span></span><span class="sig-name descname"><span class="pre">Client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">120</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#digitalocean.Client" title="Permalink to this definition"></a></dt>
-<dd><p>The official DigitalOcean Python client</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>token</strong> (<em>str</em>) – A valid API token.</p></li>
-<li><p><strong>endpoint</strong> (<em>str</em>) – Service URL. Default value is “<a class="reference external" href="https://api.digitalocean.com">https://api.digitalocean.com</a>”.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
 </section>
 <section id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
-<p>You can find an example of using the DigitalOcean Python client <a class="reference external" href="https://github.com/digitalocean/digitalocean-client-python/blob/main/examples/poc_droplets_volumes_sshkeys.py">here</a>.
+<p>Find below a working example for GET a ssh_key (per this http request) and printing the ID associated with the ssh key. If you’d like to try out this quick example, you can follow these instructions to add ssh keys to your DO account:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">digitalocean</span> <span class="kn">import</span> <span class="n">Client</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;&lt;YOUR-API-TOKEN&gt;&quot;</span><span class="p">)</span>
+
+<span class="n">ssh_keys_resp</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ssh_keys</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">ssh_keys_resp</span><span class="p">[</span><span class="s2">&quot;ssh_keys&quot;</span><span class="p">]:</span>
+   <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ID: </span><span class="si">{</span><span class="n">k</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, NAME: </span><span class="si">{</span><span class="n">k</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, FINGERPRINT: </span><span class="si">{</span><span class="n">k</span><span class="p">[</span><span class="s1">&#39;fingerprint&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The above code snippet should output the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ID</span><span class="p">:</span> <span class="mi">123456</span><span class="p">,</span> <span class="n">NAME</span><span class="p">:</span> <span class="n">my_test_ssh_key</span><span class="p">,</span> <span class="n">FINGERPRINT</span><span class="p">:</span> <span class="mi">5</span><span class="n">c</span><span class="p">:</span><span class="mi">74</span><span class="p">:</span><span class="mi">7</span><span class="n">e</span><span class="p">:</span><span class="mi">60</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">69</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span><span class="n">ca</span><span class="p">:</span><span class="n">dd</span><span class="p">:</span><span class="mi">74</span><span class="p">:</span><span class="mi">67</span><span class="p">:</span><span class="n">c3</span><span class="p">:</span><span class="n">f3</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">7</span><span class="n">f</span><span class="p">:</span><span class="n">fe</span>
+<span class="n">ID</span><span class="p">:</span> <span class="mi">123457</span><span class="p">,</span> <span class="n">NAME</span><span class="p">:</span> <span class="n">my_prod_ssh_key</span><span class="p">,</span> <span class="n">FINGERPRINT</span><span class="p">:</span> <span class="n">eb</span><span class="p">:</span><span class="mi">76</span><span class="p">:</span><span class="n">c7</span><span class="p">:</span><span class="mi">2</span><span class="n">a</span><span class="p">:</span><span class="n">d3</span><span class="p">:</span><span class="mi">3</span><span class="n">e</span><span class="p">:</span><span class="mi">80</span><span class="p">:</span><span class="mi">5</span><span class="n">d</span><span class="p">:</span><span class="n">ef</span><span class="p">:</span><span class="mi">2</span><span class="n">e</span><span class="p">:</span><span class="n">ca</span><span class="p">:</span><span class="mi">86</span><span class="p">:</span><span class="n">d7</span><span class="p">:</span><span class="mi">79</span><span class="p">:</span><span class="mi">94</span><span class="p">:</span><span class="mi">0</span><span class="n">d</span>
+</pre></div>
+</div>
+<p>You can find a more thorough example of using the DigitalOcean Python client <a class="reference external" href="https://github.com/digitalocean/digitalocean-client-python/blob/main/examples/poc_droplets_volumes_sshkeys.py">here</a>.
 The example walks through the process of creating a droplet with a specified ssh key, creating a volume, and then attaching the volume to the droplet.</p>
 <section id="pagination">
 <h3>Pagination<a class="headerlink" href="#pagination" title="Permalink to this heading"></a></h3>
@@ -503,7 +521,7 @@ The example walks through the process of creating a droplet with a specified ssh
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">account</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -575,7 +593,7 @@ The example walks through the process of creating a droplet with a specified ssh
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">actions</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -754,7 +772,7 @@ each page by default.</p>
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">apps</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -24437,7 +24455,7 @@ response == {
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">balance</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -24497,7 +24515,7 @@ response == {
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">billing_history</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -24572,7 +24590,7 @@ response == {
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdn</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -24948,7 +24966,7 @@ Default value is None.</p></li>
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">certificates</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -25213,6 +25231,470 @@ response == {
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="digitalocean.operations.CheckOperations">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digitalocean.operations.</span></span><span class="sig-name descname"><span class="pre">CheckOperations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#digitalocean.operations.CheckOperations" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>DO NOT</strong> instantiate this class directly.</p>
+<p>Instead, you should access the following operations through
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">check</span></code> attribute.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="digitalocean.operations.CheckOperations.alerts_list">
+<span class="sig-name descname"><span class="pre">alerts_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">per_page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">MutableMapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#digitalocean.operations.CheckOperations.alerts_list" title="Permalink to this definition"></a></dt>
+<dd><p>List All Alerts.</p>
+<p>To list all of the alerts for an Uptime check, send a GET request to
+<code class="docutils literal notranslate"><span class="pre">/v2/uptime/checks/$CHECK_ID/alerts</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>check_id</strong> (<em>str</em>) – A unique identifier for a check. Required.</p></li>
+<li><p><strong>per_page</strong> (<em>int</em>) – Number of items returned per page. Default value is 20.</p></li>
+<li><p><strong>page</strong> (<em>int</em>) – Which ‘page’ of paginated results to return. Default value is 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>JSON</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>HttpResponseError</strong> – </p>
+</dd>
+</dl>
+<dl>
+<dt>Example:</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># response body for status code(s): 200</span>
+<span class="n">response</span> <span class="o">==</span> <span class="p">{</span>
+    <span class="s2">&quot;alerts&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;comparison&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. The comparison operator</span>
+              <span class="n">used</span> <span class="n">against</span> <span class="n">the</span> <span class="n">alert</span><span class="s1">&#39;s threshold. Known values are: &quot;greater_than&quot; and</span>
+              <span class="s2">&quot;less_than&quot;</span><span class="o">.</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. A unique ID that can be used to</span>
+              <span class="n">identify</span> <span class="ow">and</span> <span class="n">reference</span> <span class="n">the</span> <span class="n">alert</span><span class="o">.</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. A human-friendly display name.</span>
+            <span class="s2">&quot;notifications&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;str&quot;</span>  <span class="c1"># An email to notify on an alert</span>
+                      <span class="n">trigger</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;slack&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;channel&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Slack channel to</span>
+                          <span class="n">notify</span> <span class="n">of</span> <span class="n">an</span> <span class="n">alert</span> <span class="n">trigger</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+                        <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Slack Webhook URL.</span>
+                          <span class="n">Required</span><span class="o">.</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. Period of time the threshold</span>
+              <span class="n">must</span> <span class="n">be</span> <span class="n">exceeded</span> <span class="n">to</span> <span class="n">trigger</span> <span class="n">the</span> <span class="n">alert</span><span class="o">.</span> <span class="n">Known</span> <span class="n">values</span> <span class="n">are</span><span class="p">:</span> <span class="s2">&quot;2m&quot;</span><span class="p">,</span> <span class="s2">&quot;3m&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;5m&quot;</span><span class="p">,</span> <span class="s2">&quot;10m&quot;</span><span class="p">,</span> <span class="s2">&quot;15m&quot;</span><span class="p">,</span> <span class="s2">&quot;30m&quot;</span><span class="p">,</span> <span class="ow">and</span> <span class="s2">&quot;1h&quot;</span><span class="o">.</span>
+            <span class="s2">&quot;threshold&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># Optional. The threshold at which the alert</span>
+              <span class="n">will</span> <span class="n">enter</span> <span class="n">a</span> <span class="n">trigger</span> <span class="n">state</span><span class="o">.</span> <span class="n">The</span> <span class="n">specific</span> <span class="n">threshold</span> <span class="ow">is</span> <span class="n">dependent</span> <span class="n">on</span> <span class="n">the</span>
+              <span class="n">alert</span> <span class="nb">type</span><span class="o">.</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. The type of alert. Known values</span>
+              <span class="n">are</span><span class="p">:</span> <span class="s2">&quot;latency&quot;</span><span class="p">,</span> <span class="s2">&quot;down&quot;</span><span class="p">,</span> <span class="s2">&quot;down_global&quot;</span><span class="p">,</span> <span class="ow">and</span> <span class="s2">&quot;ssl_expiry&quot;</span><span class="o">.</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;links&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;pages&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="mi">0</span>  <span class="c1"># Optional. Number of objects returned by the request.</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1"># response body for status code(s): 401, 404, 429, 500</span>
+<span class="n">response</span> <span class="o">==</span> <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A short identifier corresponding to the HTTP status code</span>
+      <span class="n">returned</span><span class="o">.</span> <span class="n">For</span>  <span class="n">example</span><span class="p">,</span> <span class="n">the</span> <span class="n">ID</span> <span class="k">for</span> <span class="n">a</span> <span class="n">response</span> <span class="n">returning</span> <span class="n">a</span> <span class="mi">404</span> <span class="n">status</span> <span class="n">code</span> <span class="n">would</span>
+      <span class="n">be</span> <span class="s2">&quot;not_found.&quot;</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A message providing additional information about the</span>
+      <span class="n">error</span><span class="p">,</span> <span class="n">including</span>  <span class="n">details</span> <span class="n">to</span> <span class="n">help</span> <span class="n">resolve</span> <span class="n">it</span> <span class="n">when</span> <span class="n">possible</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;request_id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. Optionally, some endpoints may include a</span>
+      <span class="n">request</span> <span class="n">ID</span> <span class="n">that</span> <span class="n">should</span> <span class="n">be</span>  <span class="n">provided</span> <span class="n">when</span> <span class="n">reporting</span> <span class="n">bugs</span> <span class="ow">or</span> <span class="n">opening</span> <span class="n">support</span>
+      <span class="n">tickets</span> <span class="n">to</span> <span class="n">help</span>  <span class="n">identify</span> <span class="n">the</span> <span class="n">issue</span><span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digitalocean.operations.CheckOperations.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">JSON</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'application/json'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JSON</span></span></span><a class="headerlink" href="#digitalocean.operations.CheckOperations.create" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">IO</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'application/json'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JSON</span></span></span></dt>
+<dd><p>Create a New Check.</p>
+<p>To create an Uptime check, send a POST request to <code class="docutils literal notranslate"><span class="pre">/v2/uptime/checks</span></code> specifying the
+attributes
+in the table below in the JSON body.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>body</strong> (<em>JSON</em><em> or </em><em>IO</em>) – Is either a model type or a IO type. Required.</p></li>
+<li><p><strong>content_type</strong> (<em>str</em>) – Body Parameter content-type. Known values are: ‘application/json’.
+Default value is None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>JSON</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>HttpResponseError</strong> – </p>
+</dd>
+</dl>
+<dl>
+<dt>Example:</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># response body for status code(s): 201</span>
+<span class="n">response</span> <span class="o">==</span> <span class="p">{</span>
+    <span class="s2">&quot;check&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># Optional. Default value is True. A boolean value</span>
+          <span class="n">indicating</span> <span class="n">whether</span> <span class="n">the</span> <span class="n">check</span> <span class="ow">is</span> <span class="n">enabled</span><span class="o">/</span><span class="n">disabled</span><span class="o">.</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. A unique ID that can be used to identify</span>
+          <span class="ow">and</span> <span class="n">reference</span> <span class="n">the</span> <span class="n">check</span><span class="o">.</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. A human-friendly display name.</span>
+        <span class="s2">&quot;regions&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. An array containing the selected regions</span>
+              <span class="n">to</span> <span class="n">perform</span> <span class="n">healthchecks</span> <span class="n">from</span><span class="o">.</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. The endpoint to perform healthchecks</span>
+          <span class="n">on</span><span class="o">.</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. The type of health check to perform. Known</span>
+          <span class="n">values</span> <span class="n">are</span><span class="p">:</span> <span class="s2">&quot;ping&quot;</span><span class="p">,</span> <span class="s2">&quot;http&quot;</span><span class="p">,</span> <span class="ow">and</span> <span class="s2">&quot;https&quot;</span><span class="o">.</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1"># response body for status code(s): 401, 429, 500</span>
+<span class="n">response</span> <span class="o">==</span> <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A short identifier corresponding to the HTTP status code</span>
+      <span class="n">returned</span><span class="o">.</span> <span class="n">For</span>  <span class="n">example</span><span class="p">,</span> <span class="n">the</span> <span class="n">ID</span> <span class="k">for</span> <span class="n">a</span> <span class="n">response</span> <span class="n">returning</span> <span class="n">a</span> <span class="mi">404</span> <span class="n">status</span> <span class="n">code</span> <span class="n">would</span>
+      <span class="n">be</span> <span class="s2">&quot;not_found.&quot;</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A message providing additional information about the</span>
+      <span class="n">error</span><span class="p">,</span> <span class="n">including</span>  <span class="n">details</span> <span class="n">to</span> <span class="n">help</span> <span class="n">resolve</span> <span class="n">it</span> <span class="n">when</span> <span class="n">possible</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;request_id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. Optionally, some endpoints may include a</span>
+      <span class="n">request</span> <span class="n">ID</span> <span class="n">that</span> <span class="n">should</span> <span class="n">be</span>  <span class="n">provided</span> <span class="n">when</span> <span class="n">reporting</span> <span class="n">bugs</span> <span class="ow">or</span> <span class="n">opening</span> <span class="n">support</span>
+      <span class="n">tickets</span> <span class="n">to</span> <span class="n">help</span>  <span class="n">identify</span> <span class="n">the</span> <span class="n">issue</span><span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digitalocean.operations.CheckOperations.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">MutableMapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#digitalocean.operations.CheckOperations.delete" title="Permalink to this definition"></a></dt>
+<dd><p>Delete a Check.</p>
+<p>To delete an Uptime check, send a DELETE request to <code class="docutils literal notranslate"><span class="pre">/v2/uptime/checks/$CHECK_ID</span></code>. A 204
+status
+code with no body will be returned in response to a successful request.</p>
+<p>Deleting a check will also delete alerts assicoiated with the check.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>check_id</strong> (<em>str</em>) – A unique identifier for a check. Required.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object or None</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>JSON or None</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>HttpResponseError</strong> – </p>
+</dd>
+</dl>
+<dl>
+<dt>Example:</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># response body for status code(s): 401, 404, 429, 500</span>
+<span class="n">response</span> <span class="o">==</span> <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A short identifier corresponding to the HTTP status code</span>
+      <span class="n">returned</span><span class="o">.</span> <span class="n">For</span>  <span class="n">example</span><span class="p">,</span> <span class="n">the</span> <span class="n">ID</span> <span class="k">for</span> <span class="n">a</span> <span class="n">response</span> <span class="n">returning</span> <span class="n">a</span> <span class="mi">404</span> <span class="n">status</span> <span class="n">code</span> <span class="n">would</span>
+      <span class="n">be</span> <span class="s2">&quot;not_found.&quot;</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A message providing additional information about the</span>
+      <span class="n">error</span><span class="p">,</span> <span class="n">including</span>  <span class="n">details</span> <span class="n">to</span> <span class="n">help</span> <span class="n">resolve</span> <span class="n">it</span> <span class="n">when</span> <span class="n">possible</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;request_id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. Optionally, some endpoints may include a</span>
+      <span class="n">request</span> <span class="n">ID</span> <span class="n">that</span> <span class="n">should</span> <span class="n">be</span>  <span class="n">provided</span> <span class="n">when</span> <span class="n">reporting</span> <span class="n">bugs</span> <span class="ow">or</span> <span class="n">opening</span> <span class="n">support</span>
+      <span class="n">tickets</span> <span class="n">to</span> <span class="n">help</span>  <span class="n">identify</span> <span class="n">the</span> <span class="n">issue</span><span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digitalocean.operations.CheckOperations.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">MutableMapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#digitalocean.operations.CheckOperations.get" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve an Existing Check.</p>
+<p>To show information about an existing check, send a GET request to
+<code class="docutils literal notranslate"><span class="pre">/v2/uptime/checks/$CHECK_ID</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>check_id</strong> (<em>str</em>) – A unique identifier for a check. Required.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>JSON</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>HttpResponseError</strong> – </p>
+</dd>
+</dl>
+<dl>
+<dt>Example:</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># response body for status code(s): 200</span>
+<span class="n">response</span> <span class="o">==</span> <span class="p">{</span>
+    <span class="s2">&quot;check&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># Optional. Default value is True. A boolean value</span>
+          <span class="n">indicating</span> <span class="n">whether</span> <span class="n">the</span> <span class="n">check</span> <span class="ow">is</span> <span class="n">enabled</span><span class="o">/</span><span class="n">disabled</span><span class="o">.</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. A unique ID that can be used to identify</span>
+          <span class="ow">and</span> <span class="n">reference</span> <span class="n">the</span> <span class="n">check</span><span class="o">.</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. A human-friendly display name.</span>
+        <span class="s2">&quot;regions&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. An array containing the selected regions</span>
+              <span class="n">to</span> <span class="n">perform</span> <span class="n">healthchecks</span> <span class="n">from</span><span class="o">.</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. The endpoint to perform healthchecks</span>
+          <span class="n">on</span><span class="o">.</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. The type of health check to perform. Known</span>
+          <span class="n">values</span> <span class="n">are</span><span class="p">:</span> <span class="s2">&quot;ping&quot;</span><span class="p">,</span> <span class="s2">&quot;http&quot;</span><span class="p">,</span> <span class="ow">and</span> <span class="s2">&quot;https&quot;</span><span class="o">.</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1"># response body for status code(s): 401, 404, 429, 500</span>
+<span class="n">response</span> <span class="o">==</span> <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A short identifier corresponding to the HTTP status code</span>
+      <span class="n">returned</span><span class="o">.</span> <span class="n">For</span>  <span class="n">example</span><span class="p">,</span> <span class="n">the</span> <span class="n">ID</span> <span class="k">for</span> <span class="n">a</span> <span class="n">response</span> <span class="n">returning</span> <span class="n">a</span> <span class="mi">404</span> <span class="n">status</span> <span class="n">code</span> <span class="n">would</span>
+      <span class="n">be</span> <span class="s2">&quot;not_found.&quot;</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A message providing additional information about the</span>
+      <span class="n">error</span><span class="p">,</span> <span class="n">including</span>  <span class="n">details</span> <span class="n">to</span> <span class="n">help</span> <span class="n">resolve</span> <span class="n">it</span> <span class="n">when</span> <span class="n">possible</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;request_id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. Optionally, some endpoints may include a</span>
+      <span class="n">request</span> <span class="n">ID</span> <span class="n">that</span> <span class="n">should</span> <span class="n">be</span>  <span class="n">provided</span> <span class="n">when</span> <span class="n">reporting</span> <span class="n">bugs</span> <span class="ow">or</span> <span class="n">opening</span> <span class="n">support</span>
+      <span class="n">tickets</span> <span class="n">to</span> <span class="n">help</span>  <span class="n">identify</span> <span class="n">the</span> <span class="n">issue</span><span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digitalocean.operations.CheckOperations.state_get">
+<span class="sig-name descname"><span class="pre">state_get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">MutableMapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#digitalocean.operations.CheckOperations.state_get" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve Check State.</p>
+<p>To show information about an existing check’s state, send a GET request to
+<code class="docutils literal notranslate"><span class="pre">/v2/uptime/checks/$CHECK_ID/state</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>check_id</strong> (<em>str</em>) – A unique identifier for a check. Required.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>JSON</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>HttpResponseError</strong> – </p>
+</dd>
+</dl>
+<dl>
+<dt>Example:</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># response body for status code(s): 200</span>
+<span class="n">response</span> <span class="o">==</span> <span class="p">{</span>
+    <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;previous_outage&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;duration_seconds&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># Optional.</span>
+            <span class="s2">&quot;ended_at&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional.</span>
+            <span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional.</span>
+            <span class="s2">&quot;started_at&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional.</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;regions&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;eu_west&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. Known values are:</span>
+                  <span class="s2">&quot;DOWN&quot;</span><span class="p">,</span> <span class="s2">&quot;UP&quot;</span><span class="p">,</span> <span class="ow">and</span> <span class="s2">&quot;CHECKING&quot;</span><span class="o">.</span>
+                <span class="s2">&quot;status_changed_at&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. A map of</span>
+                  <span class="n">region</span> <span class="n">to</span> <span class="n">regional</span> <span class="n">state</span><span class="o">.</span>
+                <span class="s2">&quot;thirty_day_uptime_percentage&quot;</span><span class="p">:</span> <span class="mf">0.0</span>  <span class="c1"># Optional. A</span>
+                  <span class="nb">map</span> <span class="n">of</span> <span class="n">region</span> <span class="n">to</span> <span class="n">regional</span> <span class="n">state</span><span class="o">.</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;us_east&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. Known values are:</span>
+                  <span class="s2">&quot;DOWN&quot;</span><span class="p">,</span> <span class="s2">&quot;UP&quot;</span><span class="p">,</span> <span class="ow">and</span> <span class="s2">&quot;CHECKING&quot;</span><span class="o">.</span>
+                <span class="s2">&quot;status_changed_at&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. A map of</span>
+                  <span class="n">region</span> <span class="n">to</span> <span class="n">regional</span> <span class="n">state</span><span class="o">.</span>
+                <span class="s2">&quot;thirty_day_uptime_percentage&quot;</span><span class="p">:</span> <span class="mf">0.0</span>  <span class="c1"># Optional. A</span>
+                  <span class="nb">map</span> <span class="n">of</span> <span class="n">region</span> <span class="n">to</span> <span class="n">regional</span> <span class="n">state</span><span class="o">.</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1"># response body for status code(s): 401, 404, 429, 500</span>
+<span class="n">response</span> <span class="o">==</span> <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A short identifier corresponding to the HTTP status code</span>
+      <span class="n">returned</span><span class="o">.</span> <span class="n">For</span>  <span class="n">example</span><span class="p">,</span> <span class="n">the</span> <span class="n">ID</span> <span class="k">for</span> <span class="n">a</span> <span class="n">response</span> <span class="n">returning</span> <span class="n">a</span> <span class="mi">404</span> <span class="n">status</span> <span class="n">code</span> <span class="n">would</span>
+      <span class="n">be</span> <span class="s2">&quot;not_found.&quot;</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A message providing additional information about the</span>
+      <span class="n">error</span><span class="p">,</span> <span class="n">including</span>  <span class="n">details</span> <span class="n">to</span> <span class="n">help</span> <span class="n">resolve</span> <span class="n">it</span> <span class="n">when</span> <span class="n">possible</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;request_id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. Optionally, some endpoints may include a</span>
+      <span class="n">request</span> <span class="n">ID</span> <span class="n">that</span> <span class="n">should</span> <span class="n">be</span>  <span class="n">provided</span> <span class="n">when</span> <span class="n">reporting</span> <span class="n">bugs</span> <span class="ow">or</span> <span class="n">opening</span> <span class="n">support</span>
+      <span class="n">tickets</span> <span class="n">to</span> <span class="n">help</span>  <span class="n">identify</span> <span class="n">the</span> <span class="n">issue</span><span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digitalocean.operations.CheckOperations.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">JSON</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'application/json'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JSON</span></span></span><a class="headerlink" href="#digitalocean.operations.CheckOperations.update" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">IO</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'application/json'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JSON</span></span></span></dt>
+<dd><p>Update a Check.</p>
+<p>To update the settings of an Uptime check, send a PUT request to
+<code class="docutils literal notranslate"><span class="pre">/v2/uptime/checks/$CHECK_ID</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>check_id</strong> (<em>str</em>) – A unique identifier for a check. Required.</p></li>
+<li><p><strong>body</strong> (<em>JSON</em><em> or </em><em>IO</em>) – Is either a model type or a IO type. Required.</p></li>
+<li><p><strong>content_type</strong> (<em>str</em>) – Body Parameter content-type. Known values are: ‘application/json’.
+Default value is None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>JSON</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>HttpResponseError</strong> – </p>
+</dd>
+</dl>
+<dl>
+<dt>Example:</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># response body for status code(s): 200</span>
+<span class="n">response</span> <span class="o">==</span> <span class="p">{</span>
+    <span class="s2">&quot;check&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># Optional. Default value is True. A boolean value</span>
+          <span class="n">indicating</span> <span class="n">whether</span> <span class="n">the</span> <span class="n">check</span> <span class="ow">is</span> <span class="n">enabled</span><span class="o">/</span><span class="n">disabled</span><span class="o">.</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. A unique ID that can be used to identify</span>
+          <span class="ow">and</span> <span class="n">reference</span> <span class="n">the</span> <span class="n">check</span><span class="o">.</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. A human-friendly display name.</span>
+        <span class="s2">&quot;regions&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. An array containing the selected regions</span>
+              <span class="n">to</span> <span class="n">perform</span> <span class="n">healthchecks</span> <span class="n">from</span><span class="o">.</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. The endpoint to perform healthchecks</span>
+          <span class="n">on</span><span class="o">.</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. The type of health check to perform. Known</span>
+          <span class="n">values</span> <span class="n">are</span><span class="p">:</span> <span class="s2">&quot;ping&quot;</span><span class="p">,</span> <span class="s2">&quot;http&quot;</span><span class="p">,</span> <span class="ow">and</span> <span class="s2">&quot;https&quot;</span><span class="o">.</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1"># response body for status code(s): 401, 404, 429, 500</span>
+<span class="n">response</span> <span class="o">==</span> <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A short identifier corresponding to the HTTP status code</span>
+      <span class="n">returned</span><span class="o">.</span> <span class="n">For</span>  <span class="n">example</span><span class="p">,</span> <span class="n">the</span> <span class="n">ID</span> <span class="k">for</span> <span class="n">a</span> <span class="n">response</span> <span class="n">returning</span> <span class="n">a</span> <span class="mi">404</span> <span class="n">status</span> <span class="n">code</span> <span class="n">would</span>
+      <span class="n">be</span> <span class="s2">&quot;not_found.&quot;</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A message providing additional information about the</span>
+      <span class="n">error</span><span class="p">,</span> <span class="n">including</span>  <span class="n">details</span> <span class="n">to</span> <span class="n">help</span> <span class="n">resolve</span> <span class="n">it</span> <span class="n">when</span> <span class="n">possible</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;request_id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. Optionally, some endpoints may include a</span>
+      <span class="n">request</span> <span class="n">ID</span> <span class="n">that</span> <span class="n">should</span> <span class="n">be</span>  <span class="n">provided</span> <span class="n">when</span> <span class="n">reporting</span> <span class="n">bugs</span> <span class="ow">or</span> <span class="n">opening</span> <span class="n">support</span>
+      <span class="n">tickets</span> <span class="n">to</span> <span class="n">help</span>  <span class="n">identify</span> <span class="n">the</span> <span class="n">issue</span><span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="digitalocean.operations.ChecksOperations">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digitalocean.operations.</span></span><span class="sig-name descname"><span class="pre">ChecksOperations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#digitalocean.operations.ChecksOperations" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>DO NOT</strong> instantiate this class directly.</p>
+<p>Instead, you should access the following operations through
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">checks</span></code> attribute.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="digitalocean.operations.ChecksOperations.list">
+<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">per_page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">MutableMapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#digitalocean.operations.ChecksOperations.list" title="Permalink to this definition"></a></dt>
+<dd><p>List All Checks.</p>
+<p>To list all of the Uptime checks on your account, send a GET request to <code class="docutils literal notranslate"><span class="pre">/v2/uptime/checks</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>per_page</strong> (<em>int</em>) – Number of items returned per page. Default value is 20.</p></li>
+<li><p><strong>page</strong> (<em>int</em>) – Which ‘page’ of paginated results to return. Default value is 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>JSON</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>HttpResponseError</strong> – </p>
+</dd>
+</dl>
+<dl>
+<dt>Example:</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># response body for status code(s): 200</span>
+<span class="n">response</span> <span class="o">==</span> <span class="p">{</span>
+    <span class="s2">&quot;checks&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># Optional. Default value is True. A</span>
+              <span class="n">boolean</span> <span class="n">value</span> <span class="n">indicating</span> <span class="n">whether</span> <span class="n">the</span> <span class="n">check</span> <span class="ow">is</span> <span class="n">enabled</span><span class="o">/</span><span class="n">disabled</span><span class="o">.</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. A unique ID that can be used to</span>
+              <span class="n">identify</span> <span class="ow">and</span> <span class="n">reference</span> <span class="n">the</span> <span class="n">check</span><span class="o">.</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. A human-friendly display name.</span>
+            <span class="s2">&quot;regions&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. An array containing the selected</span>
+                  <span class="n">regions</span> <span class="n">to</span> <span class="n">perform</span> <span class="n">healthchecks</span> <span class="n">from</span><span class="o">.</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. The endpoint to perform</span>
+              <span class="n">healthchecks</span> <span class="n">on</span><span class="o">.</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. The type of health check to</span>
+              <span class="n">perform</span><span class="o">.</span> <span class="n">Known</span> <span class="n">values</span> <span class="n">are</span><span class="p">:</span> <span class="s2">&quot;ping&quot;</span><span class="p">,</span> <span class="s2">&quot;http&quot;</span><span class="p">,</span> <span class="ow">and</span> <span class="s2">&quot;https&quot;</span><span class="o">.</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;links&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;pages&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="mi">0</span>  <span class="c1"># Optional. Number of objects returned by the request.</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1"># response body for status code(s): 401, 404, 429, 500</span>
+<span class="n">response</span> <span class="o">==</span> <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A short identifier corresponding to the HTTP status code</span>
+      <span class="n">returned</span><span class="o">.</span> <span class="n">For</span>  <span class="n">example</span><span class="p">,</span> <span class="n">the</span> <span class="n">ID</span> <span class="k">for</span> <span class="n">a</span> <span class="n">response</span> <span class="n">returning</span> <span class="n">a</span> <span class="mi">404</span> <span class="n">status</span> <span class="n">code</span> <span class="n">would</span>
+      <span class="n">be</span> <span class="s2">&quot;not_found.&quot;</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A message providing additional information about the</span>
+      <span class="n">error</span><span class="p">,</span> <span class="n">including</span>  <span class="n">details</span> <span class="n">to</span> <span class="n">help</span> <span class="n">resolve</span> <span class="n">it</span> <span class="n">when</span> <span class="n">possible</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;request_id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. Optionally, some endpoints may include a</span>
+      <span class="n">request</span> <span class="n">ID</span> <span class="n">that</span> <span class="n">should</span> <span class="n">be</span>  <span class="n">provided</span> <span class="n">when</span> <span class="n">reporting</span> <span class="n">bugs</span> <span class="ow">or</span> <span class="n">opening</span> <span class="n">support</span>
+      <span class="n">tickets</span> <span class="n">to</span> <span class="n">help</span>  <span class="n">identify</span> <span class="n">the</span> <span class="n">issue</span><span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="digitalocean.operations.DatabasesOperations">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digitalocean.operations.</span></span><span class="sig-name descname"><span class="pre">DatabasesOperations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#digitalocean.operations.DatabasesOperations" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -25220,7 +25702,7 @@ response == {
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">databases</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -27949,7 +28431,7 @@ Default value is None.</p></li>
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">domains</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -28599,7 +29081,7 @@ Default value is None.</p></li>
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">droplet_actions</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -29096,7 +29578,7 @@ Default value is None.</p></li>
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">droplets</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -30791,7 +31273,7 @@ response == {
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">firewalls</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -31770,7 +32252,7 @@ response == {
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">functions</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -32003,7 +32485,7 @@ GET request to <code class="docutils literal notranslate"><span class="pre">/v2/
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">image_actions</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -32265,7 +32747,7 @@ Default value is None.</p></li>
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">images</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -32758,7 +33240,7 @@ response == {
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">invoices</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -33074,7 +33556,7 @@ response == {
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">kubernetes</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -35210,7 +35692,7 @@ Default value is None.</p></li>
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">load_balancers</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -36120,7 +36602,7 @@ response == {
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">monitoring</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -37384,7 +37866,7 @@ Default value is None.</p></li>
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">one_clicks</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -37503,7 +37985,7 @@ of
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">projects</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -38400,7 +38882,7 @@ response == {
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">regions</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -38480,7 +38962,7 @@ array of <code class="docutils literal notranslate"><span class="pre">region</sp
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">registry</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -39734,7 +40216,7 @@ Default value is None.</p></li>
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">reserved_ips_actions</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -40021,7 +40503,7 @@ Default value is None.</p></li>
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">reserved_ips</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -40310,7 +40792,7 @@ This indicates that the request was processed successfully.</p>
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">sizes</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -40405,7 +40887,7 @@ array of <code class="docutils literal notranslate"><span class="pre">size</span
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">snapshots</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -40614,7 +41096,7 @@ query parameter set to <code class="docutils literal notranslate"><span class="p
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">ssh_keys</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -40910,7 +41392,7 @@ Default value is None.</p></li>
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">tags</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -41355,6 +41837,295 @@ Default value is None.</p></li>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="digitalocean.operations.UptimeOperations">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digitalocean.operations.</span></span><span class="sig-name descname"><span class="pre">UptimeOperations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#digitalocean.operations.UptimeOperations" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>DO NOT</strong> instantiate this class directly.</p>
+<p>Instead, you should access the following operations through
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">uptime</span></code> attribute.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="digitalocean.operations.UptimeOperations.alert_create">
+<span class="sig-name descname"><span class="pre">alert_create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">JSON</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'application/json'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JSON</span></span></span><a class="headerlink" href="#digitalocean.operations.UptimeOperations.alert_create" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">alert_create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">IO</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'application/json'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JSON</span></span></span></dt>
+<dd><p>Create a New Alert.</p>
+<p>To create an Uptime alert, send a POST request to <code class="docutils literal notranslate"><span class="pre">/v2/uptime/checks/$CHECK_ID/alerts</span></code>
+specifying the attributes
+in the table below in the JSON body.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>check_id</strong> (<em>str</em>) – A unique identifier for a check. Required.</p></li>
+<li><p><strong>body</strong> (<em>JSON</em><em> or </em><em>IO</em>) – The ‘’type’’ field dictates the type of alert, and hence what type of value to
+pass into the threshold property.
+Type | Description | Threshold Value
+—–<a href="#id13"><span class="problematic" id="id14">|-------------|</span></a>——————–
+<code class="docutils literal notranslate"><span class="pre">latency</span></code> | alerts on the response latency | milliseconds
+<code class="docutils literal notranslate"><span class="pre">down</span></code> | alerts on a target registering as down in any region | N/A (Not required)
+<code class="docutils literal notranslate"><span class="pre">down_global</span></code> | alerts on a target registering as down globally | N/A (Not required)
+<code class="docutils literal notranslate"><span class="pre">ssl_expiry</span></code> | alerts on a SSL certificate expiring within $threshold days | days. Is either
+a model type or a IO type. Required.</p></li>
+<li><p><strong>content_type</strong> (<em>str</em>) – Body Parameter content-type. Known values are: ‘application/json’.
+Default value is None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>JSON</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>HttpResponseError</strong> – </p>
+</dd>
+</dl>
+<dl>
+<dt>Example:</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># response body for status code(s): 201</span>
+<span class="n">response</span> <span class="o">==</span> <span class="p">{</span>
+    <span class="s2">&quot;alert&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;comparison&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. The comparison operator used</span>
+          <span class="n">against</span> <span class="n">the</span> <span class="n">alert</span><span class="s1">&#39;s threshold. Known values are: &quot;greater_than&quot; and</span>
+          <span class="s2">&quot;less_than&quot;</span><span class="o">.</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. A unique ID that can be used to identify</span>
+          <span class="ow">and</span> <span class="n">reference</span> <span class="n">the</span> <span class="n">alert</span><span class="o">.</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. A human-friendly display name.</span>
+        <span class="s2">&quot;notifications&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;str&quot;</span>  <span class="c1"># An email to notify on an alert trigger.</span>
+                  <span class="n">Required</span><span class="o">.</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;slack&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;channel&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Slack channel to notify</span>
+                      <span class="n">of</span> <span class="n">an</span> <span class="n">alert</span> <span class="n">trigger</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+                    <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Slack Webhook URL. Required.</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. Period of time the threshold must be</span>
+          <span class="n">exceeded</span> <span class="n">to</span> <span class="n">trigger</span> <span class="n">the</span> <span class="n">alert</span><span class="o">.</span> <span class="n">Known</span> <span class="n">values</span> <span class="n">are</span><span class="p">:</span> <span class="s2">&quot;2m&quot;</span><span class="p">,</span> <span class="s2">&quot;3m&quot;</span><span class="p">,</span> <span class="s2">&quot;5m&quot;</span><span class="p">,</span> <span class="s2">&quot;10m&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;15m&quot;</span><span class="p">,</span> <span class="s2">&quot;30m&quot;</span><span class="p">,</span> <span class="ow">and</span> <span class="s2">&quot;1h&quot;</span><span class="o">.</span>
+        <span class="s2">&quot;threshold&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># Optional. The threshold at which the alert will</span>
+          <span class="n">enter</span> <span class="n">a</span> <span class="n">trigger</span> <span class="n">state</span><span class="o">.</span> <span class="n">The</span> <span class="n">specific</span> <span class="n">threshold</span> <span class="ow">is</span> <span class="n">dependent</span> <span class="n">on</span> <span class="n">the</span> <span class="n">alert</span> <span class="nb">type</span><span class="o">.</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. The type of alert. Known values are:</span>
+          <span class="s2">&quot;latency&quot;</span><span class="p">,</span> <span class="s2">&quot;down&quot;</span><span class="p">,</span> <span class="s2">&quot;down_global&quot;</span><span class="p">,</span> <span class="ow">and</span> <span class="s2">&quot;ssl_expiry&quot;</span><span class="o">.</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1"># response body for status code(s): 401, 404, 429, 500</span>
+<span class="n">response</span> <span class="o">==</span> <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A short identifier corresponding to the HTTP status code</span>
+      <span class="n">returned</span><span class="o">.</span> <span class="n">For</span>  <span class="n">example</span><span class="p">,</span> <span class="n">the</span> <span class="n">ID</span> <span class="k">for</span> <span class="n">a</span> <span class="n">response</span> <span class="n">returning</span> <span class="n">a</span> <span class="mi">404</span> <span class="n">status</span> <span class="n">code</span> <span class="n">would</span>
+      <span class="n">be</span> <span class="s2">&quot;not_found.&quot;</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A message providing additional information about the</span>
+      <span class="n">error</span><span class="p">,</span> <span class="n">including</span>  <span class="n">details</span> <span class="n">to</span> <span class="n">help</span> <span class="n">resolve</span> <span class="n">it</span> <span class="n">when</span> <span class="n">possible</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;request_id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. Optionally, some endpoints may include a</span>
+      <span class="n">request</span> <span class="n">ID</span> <span class="n">that</span> <span class="n">should</span> <span class="n">be</span>  <span class="n">provided</span> <span class="n">when</span> <span class="n">reporting</span> <span class="n">bugs</span> <span class="ow">or</span> <span class="n">opening</span> <span class="n">support</span>
+      <span class="n">tickets</span> <span class="n">to</span> <span class="n">help</span>  <span class="n">identify</span> <span class="n">the</span> <span class="n">issue</span><span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digitalocean.operations.UptimeOperations.alert_delete">
+<span class="sig-name descname"><span class="pre">alert_delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alert_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">MutableMapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#digitalocean.operations.UptimeOperations.alert_delete" title="Permalink to this definition"></a></dt>
+<dd><p>Delete an Alert.</p>
+<p>To delete an Uptime alert, send a DELETE request to
+<code class="docutils literal notranslate"><span class="pre">/v2/uptime/checks/$CHECK_ID/alerts/$ALERT_ID</span></code>. A 204 status
+code with no body will be returned in response to a successful request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>check_id</strong> (<em>str</em>) – A unique identifier for a check. Required.</p></li>
+<li><p><strong>alert_id</strong> (<em>str</em>) – A unique identifier for an alert. Required.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object or None</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>JSON or None</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>HttpResponseError</strong> – </p>
+</dd>
+</dl>
+<dl>
+<dt>Example:</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># response body for status code(s): 401, 404, 429, 500</span>
+<span class="n">response</span> <span class="o">==</span> <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A short identifier corresponding to the HTTP status code</span>
+      <span class="n">returned</span><span class="o">.</span> <span class="n">For</span>  <span class="n">example</span><span class="p">,</span> <span class="n">the</span> <span class="n">ID</span> <span class="k">for</span> <span class="n">a</span> <span class="n">response</span> <span class="n">returning</span> <span class="n">a</span> <span class="mi">404</span> <span class="n">status</span> <span class="n">code</span> <span class="n">would</span>
+      <span class="n">be</span> <span class="s2">&quot;not_found.&quot;</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A message providing additional information about the</span>
+      <span class="n">error</span><span class="p">,</span> <span class="n">including</span>  <span class="n">details</span> <span class="n">to</span> <span class="n">help</span> <span class="n">resolve</span> <span class="n">it</span> <span class="n">when</span> <span class="n">possible</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;request_id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. Optionally, some endpoints may include a</span>
+      <span class="n">request</span> <span class="n">ID</span> <span class="n">that</span> <span class="n">should</span> <span class="n">be</span>  <span class="n">provided</span> <span class="n">when</span> <span class="n">reporting</span> <span class="n">bugs</span> <span class="ow">or</span> <span class="n">opening</span> <span class="n">support</span>
+      <span class="n">tickets</span> <span class="n">to</span> <span class="n">help</span>  <span class="n">identify</span> <span class="n">the</span> <span class="n">issue</span><span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digitalocean.operations.UptimeOperations.alert_get">
+<span class="sig-name descname"><span class="pre">alert_get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alert_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">MutableMapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#digitalocean.operations.UptimeOperations.alert_get" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve an Existing Alert.</p>
+<p>To show information about an existing alert, send a GET request to
+<code class="docutils literal notranslate"><span class="pre">/v2/uptime/checks/$CHECK_ID/alerts/$ALERT_ID</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>check_id</strong> (<em>str</em>) – A unique identifier for a check. Required.</p></li>
+<li><p><strong>alert_id</strong> (<em>str</em>) – A unique identifier for an alert. Required.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>JSON</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>HttpResponseError</strong> – </p>
+</dd>
+</dl>
+<dl>
+<dt>Example:</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># response body for status code(s): 200</span>
+<span class="n">response</span> <span class="o">==</span> <span class="p">{</span>
+    <span class="s2">&quot;alert&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;comparison&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. The comparison operator used</span>
+          <span class="n">against</span> <span class="n">the</span> <span class="n">alert</span><span class="s1">&#39;s threshold. Known values are: &quot;greater_than&quot; and</span>
+          <span class="s2">&quot;less_than&quot;</span><span class="o">.</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. A unique ID that can be used to identify</span>
+          <span class="ow">and</span> <span class="n">reference</span> <span class="n">the</span> <span class="n">alert</span><span class="o">.</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. A human-friendly display name.</span>
+        <span class="s2">&quot;notifications&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;str&quot;</span>  <span class="c1"># An email to notify on an alert trigger.</span>
+                  <span class="n">Required</span><span class="o">.</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;slack&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;channel&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Slack channel to notify</span>
+                      <span class="n">of</span> <span class="n">an</span> <span class="n">alert</span> <span class="n">trigger</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+                    <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Slack Webhook URL. Required.</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. Period of time the threshold must be</span>
+          <span class="n">exceeded</span> <span class="n">to</span> <span class="n">trigger</span> <span class="n">the</span> <span class="n">alert</span><span class="o">.</span> <span class="n">Known</span> <span class="n">values</span> <span class="n">are</span><span class="p">:</span> <span class="s2">&quot;2m&quot;</span><span class="p">,</span> <span class="s2">&quot;3m&quot;</span><span class="p">,</span> <span class="s2">&quot;5m&quot;</span><span class="p">,</span> <span class="s2">&quot;10m&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;15m&quot;</span><span class="p">,</span> <span class="s2">&quot;30m&quot;</span><span class="p">,</span> <span class="ow">and</span> <span class="s2">&quot;1h&quot;</span><span class="o">.</span>
+        <span class="s2">&quot;threshold&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># Optional. The threshold at which the alert will</span>
+          <span class="n">enter</span> <span class="n">a</span> <span class="n">trigger</span> <span class="n">state</span><span class="o">.</span> <span class="n">The</span> <span class="n">specific</span> <span class="n">threshold</span> <span class="ow">is</span> <span class="n">dependent</span> <span class="n">on</span> <span class="n">the</span> <span class="n">alert</span> <span class="nb">type</span><span class="o">.</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. The type of alert. Known values are:</span>
+          <span class="s2">&quot;latency&quot;</span><span class="p">,</span> <span class="s2">&quot;down&quot;</span><span class="p">,</span> <span class="s2">&quot;down_global&quot;</span><span class="p">,</span> <span class="ow">and</span> <span class="s2">&quot;ssl_expiry&quot;</span><span class="o">.</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1"># response body for status code(s): 401, 404, 429, 500</span>
+<span class="n">response</span> <span class="o">==</span> <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A short identifier corresponding to the HTTP status code</span>
+      <span class="n">returned</span><span class="o">.</span> <span class="n">For</span>  <span class="n">example</span><span class="p">,</span> <span class="n">the</span> <span class="n">ID</span> <span class="k">for</span> <span class="n">a</span> <span class="n">response</span> <span class="n">returning</span> <span class="n">a</span> <span class="mi">404</span> <span class="n">status</span> <span class="n">code</span> <span class="n">would</span>
+      <span class="n">be</span> <span class="s2">&quot;not_found.&quot;</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A message providing additional information about the</span>
+      <span class="n">error</span><span class="p">,</span> <span class="n">including</span>  <span class="n">details</span> <span class="n">to</span> <span class="n">help</span> <span class="n">resolve</span> <span class="n">it</span> <span class="n">when</span> <span class="n">possible</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;request_id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. Optionally, some endpoints may include a</span>
+      <span class="n">request</span> <span class="n">ID</span> <span class="n">that</span> <span class="n">should</span> <span class="n">be</span>  <span class="n">provided</span> <span class="n">when</span> <span class="n">reporting</span> <span class="n">bugs</span> <span class="ow">or</span> <span class="n">opening</span> <span class="n">support</span>
+      <span class="n">tickets</span> <span class="n">to</span> <span class="n">help</span>  <span class="n">identify</span> <span class="n">the</span> <span class="n">issue</span><span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="digitalocean.operations.UptimeOperations.alert_update">
+<span class="sig-name descname"><span class="pre">alert_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alert_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">JSON</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'application/json'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JSON</span></span></span><a class="headerlink" href="#digitalocean.operations.UptimeOperations.alert_update" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">alert_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alert_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">IO</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'application/json'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JSON</span></span></span></dt>
+<dd><p>Update an Alert.</p>
+<p>To update the settings of an Uptime alert, send a PUT request to
+<code class="docutils literal notranslate"><span class="pre">/v2/uptime/checks/$CHECK_ID/alerts/$ALERT_ID</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>check_id</strong> (<em>str</em>) – A unique identifier for a check. Required.</p></li>
+<li><p><strong>alert_id</strong> (<em>str</em>) – A unique identifier for an alert. Required.</p></li>
+<li><p><strong>body</strong> (<em>JSON</em><em> or </em><em>IO</em>) – Is either a model type or a IO type. Required.</p></li>
+<li><p><strong>content_type</strong> (<em>str</em>) – Body Parameter content-type. Known values are: ‘application/json’.
+Default value is None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>JSON</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>HttpResponseError</strong> – </p>
+</dd>
+</dl>
+<dl>
+<dt>Example:</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># response body for status code(s): 200</span>
+<span class="n">response</span> <span class="o">==</span> <span class="p">{</span>
+    <span class="s2">&quot;alert&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;comparison&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. The comparison operator used</span>
+          <span class="n">against</span> <span class="n">the</span> <span class="n">alert</span><span class="s1">&#39;s threshold. Known values are: &quot;greater_than&quot; and</span>
+          <span class="s2">&quot;less_than&quot;</span><span class="o">.</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. A unique ID that can be used to identify</span>
+          <span class="ow">and</span> <span class="n">reference</span> <span class="n">the</span> <span class="n">alert</span><span class="o">.</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. A human-friendly display name.</span>
+        <span class="s2">&quot;notifications&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;str&quot;</span>  <span class="c1"># An email to notify on an alert trigger.</span>
+                  <span class="n">Required</span><span class="o">.</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;slack&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;channel&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Slack channel to notify</span>
+                      <span class="n">of</span> <span class="n">an</span> <span class="n">alert</span> <span class="n">trigger</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+                    <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Slack Webhook URL. Required.</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># Optional. Period of time the threshold must be</span>
+          <span class="n">exceeded</span> <span class="n">to</span> <span class="n">trigger</span> <span class="n">the</span> <span class="n">alert</span><span class="o">.</span> <span class="n">Known</span> <span class="n">values</span> <span class="n">are</span><span class="p">:</span> <span class="s2">&quot;2m&quot;</span><span class="p">,</span> <span class="s2">&quot;3m&quot;</span><span class="p">,</span> <span class="s2">&quot;5m&quot;</span><span class="p">,</span> <span class="s2">&quot;10m&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;15m&quot;</span><span class="p">,</span> <span class="s2">&quot;30m&quot;</span><span class="p">,</span> <span class="ow">and</span> <span class="s2">&quot;1h&quot;</span><span class="o">.</span>
+        <span class="s2">&quot;threshold&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># Optional. The threshold at which the alert will</span>
+          <span class="n">enter</span> <span class="n">a</span> <span class="n">trigger</span> <span class="n">state</span><span class="o">.</span> <span class="n">The</span> <span class="n">specific</span> <span class="n">threshold</span> <span class="ow">is</span> <span class="n">dependent</span> <span class="n">on</span> <span class="n">the</span> <span class="n">alert</span> <span class="nb">type</span><span class="o">.</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. The type of alert. Known values are:</span>
+          <span class="s2">&quot;latency&quot;</span><span class="p">,</span> <span class="s2">&quot;down&quot;</span><span class="p">,</span> <span class="s2">&quot;down_global&quot;</span><span class="p">,</span> <span class="ow">and</span> <span class="s2">&quot;ssl_expiry&quot;</span><span class="o">.</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1"># response body for status code(s): 401, 404, 429, 500</span>
+<span class="n">response</span> <span class="o">==</span> <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A short identifier corresponding to the HTTP status code</span>
+      <span class="n">returned</span><span class="o">.</span> <span class="n">For</span>  <span class="n">example</span><span class="p">,</span> <span class="n">the</span> <span class="n">ID</span> <span class="k">for</span> <span class="n">a</span> <span class="n">response</span> <span class="n">returning</span> <span class="n">a</span> <span class="mi">404</span> <span class="n">status</span> <span class="n">code</span> <span class="n">would</span>
+      <span class="n">be</span> <span class="s2">&quot;not_found.&quot;</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>  <span class="c1"># A message providing additional information about the</span>
+      <span class="n">error</span><span class="p">,</span> <span class="n">including</span>  <span class="n">details</span> <span class="n">to</span> <span class="n">help</span> <span class="n">resolve</span> <span class="n">it</span> <span class="n">when</span> <span class="n">possible</span><span class="o">.</span> <span class="n">Required</span><span class="o">.</span>
+    <span class="s2">&quot;request_id&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span>  <span class="c1"># Optional. Optionally, some endpoints may include a</span>
+      <span class="n">request</span> <span class="n">ID</span> <span class="n">that</span> <span class="n">should</span> <span class="n">be</span>  <span class="n">provided</span> <span class="n">when</span> <span class="n">reporting</span> <span class="n">bugs</span> <span class="ow">or</span> <span class="n">opening</span> <span class="n">support</span>
+      <span class="n">tickets</span> <span class="n">to</span> <span class="n">help</span>  <span class="n">identify</span> <span class="n">the</span> <span class="n">issue</span><span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="digitalocean.operations.VolumeActionsOperations">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">digitalocean.operations.</span></span><span class="sig-name descname"><span class="pre">VolumeActionsOperations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#digitalocean.operations.VolumeActionsOperations" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -41362,7 +42133,7 @@ Default value is None.</p></li>
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">volume_actions</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -41843,7 +42614,7 @@ Default value is None.</p></li>
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">volume_snapshots</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -42111,7 +42882,7 @@ Droplet snapshot or a string for a volume snapshot. Required.</p>
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">volumes</span></code> attribute.</p>
 </div>
 <dl class="py method">
@@ -42495,7 +43266,7 @@ values are: “ams1”, “ams2”, “ams3”, “blr1”, “fra1”, “lon1�
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> instantiate this class directly.</p>
 <p>Instead, you should access the following operations through
-<a class="reference internal" href="digitalocean.html#digitalocean.GeneratedClient" title="digitalocean.GeneratedClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedClient</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>’s
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">vpcs</span></code> attribute.</p>
 </div>
 <dl class="py method">

@@ -29,7 +29,7 @@ class TokenCredentials:
         return AccessToken(self._token, expires_on=self._expires_on)
 
 
-class Client(GeneratedClient):  # type: ignore
+class Client(Client):  # type: ignore
     """The official DigitalOcean Python client
 
     :param token: A valid API token.

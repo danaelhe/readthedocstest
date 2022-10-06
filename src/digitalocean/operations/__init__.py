@@ -37,6 +37,9 @@ from ._operations import VolumesOperations
 from ._operations import VolumeActionsOperations
 from ._operations import VolumeSnapshotsOperations
 from ._operations import VpcsOperations
+from ._operations import ChecksOperations
+from ._operations import CheckOperations
+from ._operations import UptimeOperations
 
 from ._patch import __all__ as _patch_all
 from ._patch import *  # type: ignore # pylint: disable=unused-wildcard-import
@@ -76,6 +79,9 @@ __all__ = [
     "VolumeActionsOperations",
     "VolumeSnapshotsOperations",
     "VpcsOperations",
+    "ChecksOperations",
+    "CheckOperations",
+    "UptimeOperations",
 ]
 __all__.extend([p for p in _patch_all if p not in __all__])
 _patch_sdk()

@@ -24,7 +24,7 @@ Initialization
 ==============
 
 :mod:`digitalocean` must be initialized with :meth:`digitalocean.client`. A
-DigitalOcean API Token is required. The token can be passed explicitly to :meth:`datadog.client` or defined as environment variables
+DigitalOcean API Token is required. The token can be passed explicitly to :meth:`digitalocean.client` or defined as environment variables
 ``DIGITALOCEAN_TOKEN``.
 
 Here's an example of initializing the DigitalOcean Python Client::

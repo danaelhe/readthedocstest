@@ -10,7 +10,7 @@ from typing import Any, TYPE_CHECKING
 from azure.core import PipelineClient
 from azure.core.rest import HttpRequest, HttpResponse
 
-from ._configuration import GeneratedClientConfiguration
+from ._configuration import ClientConfiguration
 from ._serialization import Deserializer, Serializer
 from .operations import (
     AccountOperations,
@@ -20,6 +20,8 @@ from .operations import (
     BillingHistoryOperations,
     CdnOperations,
     CertificatesOperations,
+    CheckOperations,
+    ChecksOperations,
     DatabasesOperations,
     DomainsOperations,
     DropletActionsOperations,
@@ -42,6 +44,7 @@ from .operations import (
     SnapshotsOperations,
     SshKeysOperations,
     TagsOperations,
+    UptimeOperations,
     VolumeActionsOperations,
     VolumeSnapshotsOperations,
     VolumesOperations,
@@ -55,7 +58,7 @@ if TYPE_CHECKING:
     from azure.core.credentials import TokenCredential
 
 
-class GeneratedClient:  # pylint: disable=client-accepts-api-version-keyword,too-many-instance-attributes
+class Client:  # pylint: disable=client-accepts-api-version-keyword,too-many-instance-attributes
     """Introduction
     ============
 
@@ -596,6 +599,12 @@ class GeneratedClient:  # pylint: disable=client-accepts-api-version-keyword,too
     :vartype volume_snapshots: digitalocean.operations.VolumeSnapshotsOperations
     :ivar vpcs: VpcsOperations operations
     :vartype vpcs: digitalocean.operations.VpcsOperations
+    :ivar checks: ChecksOperations operations
+    :vartype checks: digitalocean.operations.ChecksOperations
+    :ivar check: CheckOperations operations
+    :vartype check: digitalocean.operations.CheckOperations
+    :ivar uptime: UptimeOperations operations
+    :vartype uptime: digitalocean.operations.UptimeOperations
     :param credential: Credential needed for the client to connect to Azure. Required.
     :type credential: ~azure.core.credentials.TokenCredential
     :keyword endpoint: Service URL. Default value is "https://api.digitalocean.com".
@@ -605,7 +614,7 @@ class GeneratedClient:  # pylint: disable=client-accepts-api-version-keyword,too
     def __init__(
         self, credential: "TokenCredential", *, endpoint: str = "https://api.digitalocean.com", **kwargs: Any
     ) -> None:
-        self._config = GeneratedClientConfiguration(credential=credential, **kwargs)
+        self._config = ClientConfiguration(credential=credential, **kwargs)
         self._client = PipelineClient(base_url=endpoint, config=self._config, **kwargs)
 
         self._serialize = Serializer()
@@ -648,6 +657,9 @@ class GeneratedClient:  # pylint: disable=client-accepts-api-version-keyword,too
             self._client, self._config, self._serialize, self._deserialize
         )
         self.vpcs = VpcsOperations(self._client, self._config, self._serialize, self._deserialize)
+        self.checks = ChecksOperations(self._client, self._config, self._serialize, self._deserialize)
+        self.check = CheckOperations(self._client, self._config, self._serialize, self._deserialize)
+        self.uptime = UptimeOperations(self._client, self._config, self._serialize, self._deserialize)
 
     def send_request(self, request: HttpRequest, **kwargs: Any) -> HttpResponse:
         """Runs the network request through the client's chained policies.
@@ -676,7 +688,7 @@ class GeneratedClient:  # pylint: disable=client-accepts-api-version-keyword,too
         self._client.close()
 
     def __enter__(self):
-        # type: () -> GeneratedClient
+        # type: () -> Client
         self._client.__enter__()
         return self
 
