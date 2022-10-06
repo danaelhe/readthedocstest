@@ -37,7 +37,7 @@ Here's an example of initializing the DigitalOcean Python Client::
 
 Example
 ===========
-Find below a working example for GET a ssh_key (per this http request) and printing the ID associated with the ssh key. If you'd like to try out this quick example, you can follow these instructions to add ssh keys to your DO account.
+Find below a working example for GET a ssh_key (per this http request) and printing the ID associated with the ssh key. If you'd like to try out this quick example, you can follow these instructions to add ssh keys to your DO account::
 
    from digitalocean import Client
 
@@ -47,7 +47,7 @@ Find below a working example for GET a ssh_key (per this http request) and print
    for k in ssh_keys_resp["ssh_keys"]:
       print(f"ID: {k['id']}, NAME: {k['name']}, FINGERPRINT: {k['fingerprint']}")
 
-The above code snippet should output the following:
+The above code snippet should output the following::
 
    ID: 123456, NAME: my_test_ssh_key, FINGERPRINT: 5c:74:7e:60:28:69:34:ca:dd:74:67:c3:f3:00:7f:fe
    ID: 123457, NAME: my_prod_ssh_key, FINGERPRINT: eb:76:c7:2a:d3:3e:80:5d:ef:2e:ca:86:d7:79:94:0d
