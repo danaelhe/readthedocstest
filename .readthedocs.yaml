@@ -6,7 +6,7 @@ build:
     python: "3.7"
   jobs:
     post_build:
-      - echo "sed -i 's/GeneratedClient/Client/g' docs/build/html/index.html"
+      - echo "find . -type f -name '*.html' | xargs sed -i '' 's/GeneratedClient/Client/g'"
 
 sphinx:
    configuration: docs/source/conf.py
