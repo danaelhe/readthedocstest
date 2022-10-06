@@ -7,3 +7,11 @@ build:
   jobs:
     post_build:
       - echo "sed -i 's/GeneratedClient/Client/g' docs/build/html/index.html"
+
+sphinx:
+   configuration: docs/source/conf.py
+
+# Optionally declare the Python requirements required to build your docs
+python:
+   install:
+   - requirements: requirements.txt
