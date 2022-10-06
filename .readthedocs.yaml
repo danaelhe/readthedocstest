@@ -6,4 +6,4 @@ build:
     python: "3.7"
   jobs:
     post_build:
-      - echo "find ./ -type f -exec sed -i 's/GeneratedClient/Client/g' {} \;"
+      - echo "sed -i 's/GeneratedClient/Client/g' docs/build/html/index.html"
