@@ -5,7 +5,7 @@ build:
   tools:
     python: "3.7"
   jobs:
-    pre_create_environment:
+    pre_build:
       - echo "find . -type f -name 'index.html' | xargs sed -i '' 's/GeneratedClient/Client/g'"
 
 sphinx:
