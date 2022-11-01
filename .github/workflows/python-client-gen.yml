@@ -33,7 +33,7 @@ jobs:
         author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
         branch: bot-regenerate-python-client
         delete-branch: true
-        title: '[Bot] Re-generate Python Client ${{ github.sha }}'
+        title: '[Bot] Re-generate Python Client ${{ github.sha::7}}'
         body: |
           Re-generate Python Client
           - [These changes to DigitalOcean spec][2] (digitalocean/openapi) triggered this regeneration of the python client.
